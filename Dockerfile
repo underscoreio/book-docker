@@ -25,28 +25,37 @@ ENV PANDOC_VERSION "1.16.0.2"
 RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pandoc-crossref
 
 ## Install Latex and fonts
+
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends \
     texlive-latex-base \
-    texlive-xetex latex-xcolor \
+    texlive-xetex \
+    latex-xcolor \
     texlive-math-extra \
     texlive-latex-extra \
     texlive-fonts-extra \
     texlive-bibtex-extra \
     lmodern \
     ttf-bitstream-vera \
-    fontconfig
+    fontconfig && \
+    rm -fr /var/lib/apt/lists/*
 
 
 ## Install Node
 RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
-    apt-get install -y nodejs
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -fr /var/lib/apt/lists/*
 
 ## Install Grunt
 RUN npm install -g grunt-cli
 
 ## Install Coffeescript
 RUN npm install -g coffee-script
+
+
+## Make SBT cache it's file in a directory shared with the host so they will be
+## shared between invocations of the container.
+RUN echo "-Dsbt.ivy.home=/source/.ivy2/" > /usr/local/etc/sbtopts
 
 
 WORKDIR /source
