@@ -7,7 +7,7 @@ This Dockerfile defines a container with all dependencies required to build Unde
 To use this template you should:
 
 
-- install Docker Compose (`brew install docker-compose` on OS X; of download from [docker.com](http://docker.com/)); 
+- install Docker Compose (`brew install docker-compose` on OS X; or download from [docker.com](http://docker.com/)); 
 - copy `docker-compose.yml` to the directory where the book source is checked out;
 - run `docker-compose run book bash`.
 
@@ -21,3 +21,20 @@ sbt pdf
 ```
 
 to generate a PDF version of the book you're working on.
+
+
+## Building
+
+To create a new version of this container
+
+```bash
+docker build -t underscore/book .
+```
+
+Once it is built, login and push it to Docker Hub
+
+```bash
+docker login 
+docker push underscore/book:latest
+```
+
