@@ -55,6 +55,7 @@ RUN npm install -g coffee-script
 
 ## Make SBT cache it's file in a directory shared with the host so they will be
 ## shared between invocations of the container.
+RUN mkdir /etc/sbt
 RUN echo "-Dsbt.ivy.home=/source/.ivy2/" > /etc/sbt/sbtopts
 
 
