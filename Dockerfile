@@ -46,11 +46,8 @@ RUN curl -sL https://deb.nodesource.com/setup_5.x | bash - && \
     apt-get install -y --no-install-recommends nodejs && \
     rm -fr /var/lib/apt/lists/*
 
-## Install Grunt
-RUN npm install -g grunt-cli
-
-## Install Coffeescript
-RUN npm install -g coffee-script
+## Install NPM dependencies
+RUN npm install -g grunt-cli coffee-script yarn
 
 
 ## Make SBT cache it's file in a directory shared with the host so they will be
