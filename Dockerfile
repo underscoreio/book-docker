@@ -22,7 +22,7 @@ ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/b
 ## Install Pandoc
 ENV PANDOC_VERSION "1.16.0.2"
 
-RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pandoc-crossref
+RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pandoc-crossref && cabal install pandoc-include
 
 ## Install Latex and fonts
 
