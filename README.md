@@ -1,5 +1,7 @@
 # Docker Setup for Underscore Book Builds
 
+**NOTE: THIS HAS BEEN REPLACED BY THE DOCKER TEMPLATE IN<br/>https://github.com/underscoreio/underscore-ebook-template**
+
 This Dockerfile defines a container with all dependencies required to build Underscore's books, such as [Creative Scala](https://github.com/underscoreio/creative-scala/)
 
 ## Usage
